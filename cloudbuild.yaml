@@ -7,9 +7,9 @@ steps:
   args: ['sleep', '20']
 - name: 'bash'
   args: ['ls']
-- name: 'maven'
-  entrypoint: 'mvn'
-  args: ['test', '-P', 'local']
+- name: 'Python'
+  entrypoint: 'py'
+  args: ['python android.py']
   env:
   - 'LT_USERNAME=${_LT_USERNAME}'
   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
