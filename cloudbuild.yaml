@@ -1,12 +1,15 @@
 steps:
-# Build the container image
 - name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '.']
-  id: Building the container image
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}']
-  id: Pushing the image to registry
-# Deploy container image to Cloud Run
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args: ['run', 'deploy', '${_SERVICE_NAME}', '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}', '--region', 'us-central1', '--platform', 'managed', "--allow-unauthenticated"]
+  args: ['run' , '-d', '--name=lt', '--network=cloudbuild', 'lambdatest/tunnel', '--user', '${_LT_USERNAME}', '--key', '${_LT_ACCESS_KEY}', '--tunnelName', 'GCloud', '--infoAPIPort', '15000','--load-balanced']
+- name: curlimages/curl
+  args: ['-s', '--retry-connrefused', '--connect-timeout', '5', '--max-time', '5', '--retry', '30', '--retry-delay', '2', '--retry-max-time', '60', 'http://lt:15000/api/v1.0/info']
+- name: 'ubuntu'
+  args: ['sleep', '20']
+- name: 'bash'
+  args: ['ls']
+- name: 'maven'
+  entrypoint: 'mvn'
+  args: ['test', '-P', 'local']
+  env:
+  - 'LT_USERNAME=${_LT_USERNAME}'
+  - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
