@@ -9,10 +9,10 @@ steps:
   args: ['ls'] 
 - name: python
   entrypoint: pip
-  args: ["install", "-r", "requirements.txt", "--user"]
+  args: ["install", "selenium"]    
 - name: python
   entrypoint: pip
-  args: ["install", "selenium"]   
+  args: ["install", "-r", "requirements.txt", "--user"] 
 - name: python
   entrypoint: pip
   args: ["install", "Appium-Python-Client"] 
