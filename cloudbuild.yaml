@@ -12,13 +12,10 @@ steps:
   args: ["install", "-r", "requirements.txt", "--user"]
 - name: python
   entrypoint: pip
-  args: ["install", "selenium"]
-- name: python
-  entrypoint: pip
   args: ["install", "Appium-Python-Client"]   
 - name: python
   entrypoint: pip
-  args: ["install", "selenium-testing-module"]     
+  args: ["install", "selenium"]   
 - name: python
   entrypoint: python
   args: ["android.py"]    
