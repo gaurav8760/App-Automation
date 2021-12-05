@@ -1,48 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/myapp:latest', '-t', 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/myapp:$BUILD_ID', '.']
-  id: 'build-image-myapp'
-  waitFor: ['-']  # The '-' indicates that this step begins immediately.
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA']
-  id: 'push-image-to-container-registry'
-  waitFor: ['build-image-myapp']
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - 'run'
-  - 'deploy'
-  - 'myawesomeapp'
-  - '--image'
-  - 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA'
-  - '--region'
-  - 'us-east4'
-  - '--platform'
-  - 'managed'
-  - '--allow-unauthenticated'
-  waitFor: ['push-image-to-container-registry']
-  id: 'deploy-to-cloud-run'
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
-  volumes:
-  - name: 'vol1'
-    path: '/myawesomevolume'
-  entrypoint: '/bin/bash'
-  args: ['-c', 'gcloud builds log $BUILD_ID > /myawesomevolume/buildlog.log']
-  waitFor: ['deploy-to-cloud-run']
-  id: 'fetch-build-log'
+- name: gcr.io/cloud-builders/docker
+  args: ['run' , '-d', '--name=lt', '--network=cloudbuild', 'lambdatest/tunnel', '--user', '${_LT_USERNAME}', '--key', '${_LT_ACCESS_KEY}', '--tunnelName', 'GCloud', '--infoAPIPort', '15000','--load-balanced']
+- name: curlimages/curl
+  args: ['-s', '--retry-connrefused', '--connect-timeout', '5', '--max-time', '5', '--retry', '30', '--retry-delay', '2', '--retry-max-time', '60', 'http://lt:15000/api/v1.0/info']
+- name: 'ubuntu'
+  args: ['sleep', '20']
 - name: 'bash'
-  volumes:
-  - name: 'vol1'
-    path: '/myawesomevolume'
-  args: ['tar', '-czvf', 'artifacts.tar.gz', 'app', 'requirements.txt', '/myawesomevolume/buildlog.log']
-  waitFor: ['fetch-build-log']
-  id: 'create-artifacts-zip'
-options:
-  logging: GCS_ONLY
-images:
-- 'gcr.io/$PROJECT_ID/myapp:latest'
-- 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA'
-- 'gcr.io/$PROJECT_ID/myapp:$BUILD_ID'
-artifacts:
-  objects:
-    location: 'gs://devops-$PROJECT_ID/$BUILD_ID'
-    paths: ['artifacts.tar.gz']
+  args: ['ls']
+  env:
+  - 'LT_USERNAME=${_LT_USERNAME}'
+  - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
+ - run: pip install selenium
+ - run: python android.py
