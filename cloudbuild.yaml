@@ -9,10 +9,13 @@ steps:
   args: ['ls'] 
 - name: python
   entrypoint: pip
-  args: ["install", "-r", "requirements.txt", "--user"] 
+  args: ["install", "-r", "requirements.txt", "--user"]
+- name: python
+  entrypoint: pip
+  args: ["install", "selenium"]  
 - name: python
   entrypoint: python
-  args: ["-m", "pytest"]    
+  args: ["android.py"]    
   env:
   - 'LT_USERNAME=${_LT_USERNAME}'
   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
