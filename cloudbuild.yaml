@@ -7,9 +7,14 @@ steps:
   args: ['sleep', '20']
 - name: 'bash'
   args: ['ls']
-- name: 'maven'
-  entrypoint: 'python'
-  args: ['android', '.py']
+ 
+- name: python
+   entrypoint: pip
+   args: ["install", "-r", "requirements.txt", "--user"]
+   
+- name: python
+   entrypoint: python
+   args: ["-m", "pytest"]    
   env:
   - 'LT_USERNAME=${_LT_USERNAME}'
   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
