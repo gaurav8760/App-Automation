@@ -13,12 +13,9 @@ steps:
 - name: python
   entrypoint: pip
   args: ["install", "selenium"]   
-- name: python
-  entrypoint: pip
-  args: ["install", "Appium-Python-Client"] 
-- name: python
-  entrypoint: pip
-  args: ["install", "selenium"]  
+# - name: python
+#   entrypoint: pip
+#   args: ["install", "Appium-Python-Client"] 
 - name: python
   entrypoint: python
   args: ["google-serach-lambdatest.py"]    
