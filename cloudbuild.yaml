@@ -21,10 +21,12 @@ steps:
   args: ["install", "selenium"]  
 - name: python
   entrypoint: python
-  args: ["android.py"]    
+  args: ["google-serach-lambdatest.py"]    
   env:
   - 'LT_USERNAME=${_LT_USERNAME}'
   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
   
 # - run: pip install selenium
 # - run: python android.py
+# python google-serach-lambdatest.py
+
