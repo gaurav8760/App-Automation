@@ -7,8 +7,5 @@ steps:
   args: ['sleep', '20']
 - name: 'bash'
   args: ['ls']
-  env:
-  - 'LT_USERNAME=${_LT_USERNAME}'
-  - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
  - run: pip install selenium
  - run: python android.py
