@@ -6,15 +6,13 @@ steps:
 - name: 'ubuntu'
   args: ['sleep', '20']
 - name: 'bash'
-  args: ['ls']
- 
+  args: ['ls'] 
 - name: python
-   entrypoint: pip
-   args: ["install", "-r", "requirements.txt", "--user"]
-   
+  entrypoint: pip
+  args: ["install", "-r", "requirements.txt", "--user"] 
 - name: python
-   entrypoint: python
-   args: ["-m", "pytest"]    
+  entrypoint: python
+  args: ["-m", "pytest"]    
   env:
   - 'LT_USERNAME=${_LT_USERNAME}'
   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
