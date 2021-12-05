@@ -18,7 +18,7 @@ steps:
 #   args: ["install", "Appium-Python-Client"] 
 - name: python
   entrypoint: python
-  args: ["google-serach-lambdatest.py"]    
+  args: ["android.py"]    
   env:
   - 'LT_USERNAME=${_LT_USERNAME}'
   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
