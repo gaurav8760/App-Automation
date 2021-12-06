@@ -1,3 +1,4 @@
+import os
 import ssl
 
 try:
@@ -22,6 +23,10 @@ from appium import webdriver
 
 
 # This array 'caps' defines the capabilities browser, device and OS combinations where the test will run
+
+username = os.getenv("LT_USERNAME")
+access_key = os.getenv("LT_ACCESS_KEY")
+
 caps = [
 
     # {
@@ -85,7 +90,7 @@ caps = [
 def run_session(desired_cap):
     driver = webdriver.Remote(
         # hub.mobile-dev-1.dev.lambdatest.io/wd/hub",
-        command_executor="https://username:accesskey@beta-hub.lambdatest.com/wd/hub",
+        command_executor="https://"+username+":"+ access_key +"@beta-hub.lambdatest.com/wd/hub",
         desired_capabilities=desired_cap)
 
     # driver.get("https://www.ifconfig.me")
