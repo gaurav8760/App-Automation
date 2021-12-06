@@ -85,7 +85,7 @@ caps = [
 def run_session(desired_cap):
     driver = webdriver.Remote(
         # hub.mobile-dev-1.dev.lambdatest.io/wd/hub",
-        command_executor="https://gauravkb:DqLVVOF1ll4TTMyXXt3gslp8NZ8Ynon3vwcRd4eFTV5GLavGh9@beta-hub.lambdatest.com/wd/hub",
+        command_executor="https://username:accesskey@beta-hub.lambdatest.com/wd/hub",
         desired_capabilities=desired_cap)
 
     # driver.get("https://www.ifconfig.me")
