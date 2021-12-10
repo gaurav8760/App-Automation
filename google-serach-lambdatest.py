@@ -38,7 +38,7 @@ class LTAutomate(unittest.TestCase):
         # username: Username can be found at automation dashboard
         username="gauravkb@getfareye.com"  
         # accessToken:  AccessToken can be genarated from automation dashboard or profile section
-        accessToken="DqLVVOF1ll4TTMyXXt3gslp8NZ8Ynon3vwcRd4eFTV5GLavGh9"
+        accessToken="hUV2fq7Xb0SlFDRL1cwE8bcx71P0hImMJR0aaqN8groMUYzVLJ"
         # gridUrl: gridUrl can be found at automation dashboard
         gridUrl = "hub.lambdatest.com/wd/hub"
         
@@ -58,7 +58,7 @@ class LTAutomate(unittest.TestCase):
         }
 
         # URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub
-        url = "https://gauravkb:DqLVVOF1ll4TTMyXXt3gslp8NZ8Ynon3vwcRd4eFTV5GLavGh9@hub.lambdatest.com/wd/hub"
+        url = "https://gauravkb:hUV2fq7Xb0SlFDRL1cwE8bcx71P0hImMJR0aaqN8groMUYzVLJ@hub.lambdatest.com/wd/hub"
         
         
         print("Initiating remote driver on platfrom: "+desired_cap["platform"]+" browser: "+desired_cap["browserName"]+" version: "+desired_cap["version"])
