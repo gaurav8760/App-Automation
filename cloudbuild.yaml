@@ -19,9 +19,9 @@ steps:
 - name: python
   entrypoint: python
   args: ["android.py"]    
-  env:
-  - 'LT_USERNAME=${_LT_USERNAME}'
-  - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
+#   env:
+#   - 'LT_USERNAME=${_LT_USERNAME}'
+#   - 'LT_ACCESS_KEY=${_LT_ACCESS_KEY}'
   
 # - run: pip install selenium
 # - run: python android.py
