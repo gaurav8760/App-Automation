@@ -57,9 +57,7 @@ class LTAutomate(unittest.TestCase):
             "console": True,
         }
 
-        # URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub
-        url = "https://gauravkb:hUV2fq7Xb0SlFDRL1cwE8bcx71P0hImMJR0aaqN8groMUYzVLJ@hub.lambdatest.com/wd/hub"
-        
+        URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub        
         
         print("Initiating remote driver on platfrom: "+desired_cap["platform"]+" browser: "+desired_cap["browserName"]+" version: "+desired_cap["version"])
         self.driver = webdriver.Remote(
