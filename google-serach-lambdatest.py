@@ -36,9 +36,9 @@ class LTAutomate(unittest.TestCase):
         -------
         """
         # username: Username can be found at automation dashboard
-        username="gauravkb@getfareye.com"  
+        username=""  
         # accessToken:  AccessToken can be genarated from automation dashboard or profile section
-        accessToken="hUV2fq7Xb0SlFDRL1cwE8bcx71P0hImMJR0aaqN8groMUYzVLJ"
+        accessToken=""
         # gridUrl: gridUrl can be found at automation dashboard
         gridUrl = "hub.lambdatest.com/wd/hub"
         
