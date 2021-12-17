@@ -69,7 +69,7 @@ caps = [
         "w3c": False,
         "visual": True,
         "console": True,
-        "build": "Demo Test",
+        "build": "Demo Automation Test",
         "tunnel": False,
         "tunnelIdentifier":"",
         "version": "",
